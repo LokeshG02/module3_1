@@ -1,7 +1,7 @@
 // write a smart contract that implements the require(), assert() and revert() statements
 // consider a simple school grading system or a small local store. The project doesn't have to be extensive; 
 //just 3-4 functions using all three error handlers will suffice.
-// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.0;
 
 contract SchoolGrading {
@@ -24,10 +24,7 @@ contract SchoolGrading {
         gradeSet = true;
     }
 
-    function getGrade() external view returns (uint) {
-        require(gradeSet, "Grade has not been set");
-        return grade;
-    }
+   
 
     function updateTeacher(address newTeacher) external {
         require(msg.sender == teacher, "Only the current teacher can update");
@@ -35,5 +32,11 @@ contract SchoolGrading {
         teacher = newTeacher;
     }
 
-    
+    function removeGrade() external onlyTeacher {
+        if (!gradeSet) {
+            revert("Grade has not been set, cannot remove");
+        }
+        grade = 0;
+        gradeSet = false;
+    }
 }
