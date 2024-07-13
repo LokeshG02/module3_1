@@ -16,7 +16,7 @@ the following functions :-
 
 ### Functionalities
 
-(1) require(): Used to validate certain conditions before further execution of a function. It takes two parameters as an input.
+(1) require(): Used to validate certain conditions before further execution of a function.
 
 (2) assert(): The assert function, like require, is a convenience function that checks for conditions. If a condition fails, then the function execution is terminated with an error message.
 
